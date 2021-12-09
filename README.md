@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# Produuucts
+### O que é?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SPA mobile first desenvolvido em React.js
 
-## Available Scripts
+- O **BuscadorCEP!** é um projeto que ajuda pessoas a encontrar endereços e CEPs.
+- Na Home, o site é apresentado junto com  as suas funcionalidades
 
-In the project directory, you can run:
+### Bibliotecas
 
-### `yarn start`
+As bibliotecas utilizadas foram:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Para melhor separação do código e compatibilidade entre os navegadores foi utilizado [styled-component](https://styled-components.com/)
+- Para fazer as rotas foi utilizado [react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
+- Para facilitar a notificação e melhorar a experiência do usuário foi utilizado [react-hot-toast](https://react-hot-toast.com/)
+- Para manipulação de forms foi utilizado [react-hook-form](https://react-hook-form.com/), foi uma alternativa viável, uma vez que o form é bem simples. Além disso, foram utilizadas as bibliotecas [yup](https://github.com/jquense/yup) + [yup-locale-pt](https://www.npmjs.com/package/yup-locale-pt) para a validação do form, pois já existe uma integração entre as bibliotecas.
+- Para manipulação de banco de dados no browser foi utilizado o [idb](https://www.npmjs.com/package/idb#installation)
+- Para icones, foi utilizada a biblioteca [mui](https://mui.com/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Como rodar o projeto
 
-### `yarn test`
+```
+yarn para instalar os pacotes
+yarn start para rodar o projeto
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Demo
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Demo [aqui](https://buscadorcep.netlify.app/)
