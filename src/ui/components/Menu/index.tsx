@@ -1,0 +1,33 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { IMenu } from '../../../@types';
+import SwitchButton from '../SwitchButton';
+import { MenuContainer, MenuItem } from './styles';
+
+const Menu = ({ open, onClick, setOpen }: IMenu): JSX.Element => {
+    return (
+        <MenuContainer open={open}>
+            <MenuItem>
+                <Link onClick={() => setOpen(!open)} to="/">
+                    Home
+                </Link>
+            </MenuItem>
+            <MenuItem>
+                <Link onClick={() => setOpen(!open)} to="/buscar-endereco">
+                    Buscar endereço
+                </Link>
+            </MenuItem>
+            <MenuItem>
+                <Link onClick={() => setOpen(!open)} to="/currency-converter">
+                    Conversor de moeda
+                </Link>
+            </MenuItem>
+            <MenuItem>
+                <SwitchButton onClick={onClick} />
+            </MenuItem>
+        </MenuContainer>
+    );
+};
+
+export default Menu;
