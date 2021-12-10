@@ -15,3 +15,9 @@ export const SearchAddressContainer = styled.div`
         width: 1280px;
     }
 `;
+
+export const SearchArddressSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;

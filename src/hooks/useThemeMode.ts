@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { ThemeModeType } from '../@types';
 
 const useThemeMode = (): ThemeModeType => {
-    const [themeName, setThemeName] = useState('dark');
+    const [themeName, setThemeName] = useState('light');
 
     const setMode = (modeName: string) => {
         window.localStorage.setItem('theme', modeName);

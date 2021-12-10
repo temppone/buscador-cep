@@ -1,3 +1,5 @@
+import { ReactElement } from 'react';
+
 export interface IInputListItem {
     id: string;
     label: string;
@@ -37,4 +39,11 @@ export interface IAddress {
 
 export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     name: string;
+}
+
+export interface IRoute {
+    name: string;
+    path: string;
+    element: ReactElement;
+    breadcrumb?: string[];
 }

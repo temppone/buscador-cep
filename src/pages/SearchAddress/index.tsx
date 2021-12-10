@@ -2,13 +2,15 @@ import React from 'react';
 
 import PageHeader from '../../ui/components/PageHeader';
 import SearchWithCep from '../../ui/components/SearchWithCep';
-import { SearchAddressContainer } from './styles';
+import { SearchAddressContainer, SearchArddressSection } from './styles';
 
 const SearchAddress = (): JSX.Element => {
     return (
         <SearchAddressContainer>
-            <PageHeader title="Buscar endereço" />
-            <SearchWithCep />
+            <SearchArddressSection>
+                <PageHeader title="Buscar endereço" />
+                <SearchWithCep />
+            </SearchArddressSection>
         </SearchAddressContainer>
     );
 };
