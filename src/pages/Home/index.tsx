@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
+import routes from '../../routes';
+import Breadcrumb from '../../ui/components/Breadcrumb';
 import Button from '../../ui/components/Button';
 import Head from '../../ui/components/Head';
 import MapSection from '../../ui/components/MapSection';
@@ -23,6 +25,7 @@ const Home = (): JSX.Element => {
                 title="Home"
                 description="Essa é a página inicial do BuscadorCEP!"
             />
+
             <HomeContent>
                 <HomePresentation>
                     <HomeHeader>Bem vindo ao BuscadorCEP!</HomeHeader>
