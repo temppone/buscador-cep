@@ -39,6 +39,8 @@ export interface IAddress {
 
 export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     name: string;
+    backgroundLess?: boolean;
+    svg?: ReactElement;
 }
 
 export interface IRoute {
@@ -46,4 +48,10 @@ export interface IRoute {
     path: string;
     element: ReactElement;
     breadcrumb?: string[];
+}
+
+export interface IOption {
+    label: string;
+    value: string;
+    sigla?: string;
 }
