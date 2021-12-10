@@ -19,8 +19,8 @@ const Menu = ({ open, onClick, setOpen }: IMenu): JSX.Element => {
                 </Link>
             </MenuItem>
             <MenuItem>
-                <Link onClick={() => setOpen(!open)} to="/currency-converter">
-                    Conversor de moeda
+                <Link onClick={() => setOpen(!open)} to="/buscar-cep">
+                    Buscar CEP
                 </Link>
             </MenuItem>
             <MenuItem>

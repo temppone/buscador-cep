@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+    HeaderTitleContainer,
     PageHeaderCaption,
     PageHeaderContainer,
     PageHeaderTitle,
@@ -14,7 +15,9 @@ interface IPageHeader {
 const PageHeader = ({ title, caption }: IPageHeader): JSX.Element => {
     return (
         <PageHeaderContainer>
-            <PageHeaderTitle>{title}</PageHeaderTitle>
+            <HeaderTitleContainer>
+                <PageHeaderTitle>{title}</PageHeaderTitle>
+            </HeaderTitleContainer>
             <PageHeaderCaption>{caption}</PageHeaderCaption>
         </PageHeaderContainer>
     );

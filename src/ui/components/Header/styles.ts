@@ -7,6 +7,10 @@ export const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
+
+    @media print {
+        display: none;
+    }
 `;
 
 export const LogoContainer = styled.div`

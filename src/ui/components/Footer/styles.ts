@@ -9,8 +9,9 @@ export const FooterContainer = styled.div`
     position: absolute;
     width: 100%;
     top: 100%;
+    margin-top: 10rem;
 `;
 
 export const FooterText = styled.div`
-    padding: 1rem;
+    padding: 2rem;
 `;

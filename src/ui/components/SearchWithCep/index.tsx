@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Search } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { ptShort } from 'yup-locale-pt';
 
@@ -13,7 +13,11 @@ import { maskCep, removeCepMask } from '../../../utils/cepMask';
 import Button from '../Button';
 import Input from '../Input';
 import Loading from '../Loading';
-import { SearchWithCepContainer, SearchWithCepForm } from './styles';
+import {
+    FormButtonsContainer,
+    SearchWithCepContainer,
+    SearchWithCepForm,
+} from './styles';
 
 interface IFormData {
     cep: string;
@@ -29,6 +33,7 @@ const SearchWithCep = (): JSX.Element => {
     const [haveResult, setHaveResult] = useState(false);
     const { loading, error, request } = useFetch();
     const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
 
     yup.setLocale(ptShort);
 
@@ -64,15 +69,14 @@ const SearchWithCep = (): JSX.Element => {
                 setValue('state', response?.data?.uf);
                 setValue('city', response?.data?.localidade);
                 setValue('neighborhood', response?.data?.bairro);
-
                 setHaveResult(true);
-
                 return;
             }
 
             if (response?.data?.erro) {
                 setError('cep', { message: 'CEP não encontrado' });
                 setHaveResult(false);
+                console.log(error);
             }
         };
 
@@ -188,9 +192,16 @@ const SearchWithCep = (): JSX.Element => {
                 )}
 
                 {!haveResult ? (
-                    <Button type="submit" name="Buscar" />
+                    <FormButtonsContainer>
+                        <Button type="submit" name="Buscar" />
+                        <Button
+                            type="button"
+                            name="Voltar"
+                            onClick={() => navigate(-1)}
+                        />
+                    </FormButtonsContainer>
                 ) : (
-                    <>
+                    <FormButtonsContainer>
                         <Button
                             onClick={() => {
                                 setHaveResult(false);
@@ -199,10 +210,10 @@ const SearchWithCep = (): JSX.Element => {
                             name="Nova Busca"
                         />
                         <Button
-                            onClick={() => setHaveResult(false)}
+                            onClick={() => window.print()}
                             name="Imprimir"
                         />
-                    </>
+                    </FormButtonsContainer>
                 )}
             </SearchWithCepForm>
         </SearchWithCepContainer>

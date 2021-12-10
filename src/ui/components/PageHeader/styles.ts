@@ -2,9 +2,16 @@ import styled from 'styled-components';
 
 export const PageHeaderContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 0.5rem;
     margin-bottom: 2rem;
+`;
+
+export const HeaderTitleContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;
 
 export const PageHeaderTitle = styled.h1`
@@ -14,7 +21,6 @@ export const PageHeaderTitle = styled.h1`
     position: relative;
     z-index: 1;
     margin-bottom: 1rem;
-    width: 50%;
 
     :after {
         content: '';

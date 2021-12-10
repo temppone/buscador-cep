@@ -12,3 +12,10 @@ export const SearchWithCepForm = styled.form`
     justify-content: center;
     width: 100%;
 `;
+
+export const FormButtonsContainer = styled.div`
+    width: 100%;
+    @media print {
+        display: none;
+    }
+`;
