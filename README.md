@@ -1,4 +1,4 @@
-# Produuucts
+# BuscadorCEP!
 ### O que é?
 
 SPA mobile first desenvolvido em React.js
@@ -26,4 +26,4 @@ yarn start para rodar o projeto
 
 ### Demo
 
-Demo [aqui](https://buscadorcep.netlify.app/)
+Demo [aqui](https://cep-buscador.netlify.app/)
