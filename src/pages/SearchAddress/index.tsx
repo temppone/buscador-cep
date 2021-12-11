@@ -1,8 +1,13 @@
 import React from 'react';
 
+import { ReactComponent as SearchAddressSvg } from '../../ui/assets/svgs/searchAddress.svg';
 import PageHeader from '../../ui/components/PageHeader';
 import SearchWithCep from '../../ui/components/SearchWithCep';
-import { SearchAddressContainer, SearchArddressSection } from './styles';
+import {
+    PresentationSvgContainer,
+    SearchAddressContainer,
+    SearchArddressSection,
+} from './styles';
 
 const SearchAddress = (): JSX.Element => {
     return (
@@ -11,6 +16,9 @@ const SearchAddress = (): JSX.Element => {
                 <PageHeader title="Buscar endereço" />
                 <SearchWithCep />
             </SearchArddressSection>
+            <PresentationSvgContainer>
+                <SearchAddressSvg width="60rem" height="60rem" />
+            </PresentationSvgContainer>
         </SearchAddressContainer>
     );
 };
