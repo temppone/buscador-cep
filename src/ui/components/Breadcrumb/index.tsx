@@ -25,12 +25,10 @@ const Breadcrumb = ({ routes }: IBreadcrumb) => {
 
                     breadcrumb?.map((crumb) => {
                         if (crumb !== name) {
-                            console.log(crumb, 'nome diferente');
                             return;
                         }
                         return (
                             <BreadcrumbItem disabled={disabled}>
-                                {console.log(crumb, 'nome igual')}
                                 <Link to={path}>{name}</Link>
                             </BreadcrumbItem>
                         );
