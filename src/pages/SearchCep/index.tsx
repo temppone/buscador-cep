@@ -157,8 +157,6 @@ const SearchCep = () => {
                 <SearchCepForm action="" onSubmit={handleSubmit(onSubmit)}>
                     <PageHeader title="Buscar CEP" />
 
-                    <Breadcrumb routes={routes} />
-
                     <AutoCompleteInput
                         inputError={errors?.state?.message}
                         label="UF"
@@ -216,7 +214,7 @@ const SearchCep = () => {
             </SearchCepContent>
 
             <SearchCepSvgContainer>
-                <SearchCepSvg height="55rem" width="55rem" />
+                <SearchCepSvg height="50rem" width="50rem" />
             </SearchCepSvgContainer>
         </SearchCepContainer>
     );
