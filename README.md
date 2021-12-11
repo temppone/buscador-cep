@@ -15,7 +15,7 @@ As bibliotecas utilizadas foram:
 - Para facilitar a notificação e melhorar a experiência do usuário foi utilizado [react-hot-toast](https://react-hot-toast.com/)
 - Para manipulação de forms foi utilizado [react-hook-form](https://react-hook-form.com/), foi uma alternativa viável, uma vez que o form é bem simples. Além disso, foram utilizadas as bibliotecas [yup](https://github.com/jquense/yup) + [yup-locale-pt](https://www.npmjs.com/package/yup-locale-pt) para a validação do form, pois já existe uma integração entre as bibliotecas.
 - Para manipulação de banco de dados no browser foi utilizado o [idb](https://www.npmjs.com/package/idb#installation)
-- Para icones, foi utilizada a biblioteca [mui](https://mui.com/)
+- Para icones e autocomplete, foi utilizada a biblioteca [mui](https://mui.com/)
 
 ### Como rodar o projeto
 

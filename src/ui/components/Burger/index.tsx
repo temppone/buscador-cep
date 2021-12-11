@@ -5,7 +5,7 @@ import { BurgerContainer, BurgerLine } from './styles';
 
 const Burger = ({ open, setOpen }: IBurger): JSX.Element => {
     return (
-        <BurgerContainer open={open} onClick={() => setOpen(!open)}>
+        <BurgerContainer onClick={() => setOpen(!open)} open={open}>
             <BurgerLine open={open} />
             <BurgerLine open={open} />
             <BurgerLine open={open} />

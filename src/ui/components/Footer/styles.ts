@@ -3,11 +3,14 @@ import styled from 'styled-components';
 export const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     font-size: ${({ theme }) => theme.fontSizes.small};
     width: 100%;
     margin-top: 5rem;
     background: ${({ theme }) => theme.palette.background.tertiary};
-    padding: 2rem;
+    position: relative;
+    top: 100%;
+    height: 10rem;
 `;
 
 export const FooterContent = styled.div`

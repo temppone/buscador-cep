@@ -20,34 +20,39 @@ const Home = (): JSX.Element => {
     return (
         <HomeContainer>
             <Head
-                title="Home"
                 description="Essa é a página inicial do BuscadorCEP!"
+                title="Home"
             />
 
             <HomeContent>
                 <HomePresentation>
                     <HomeHeader>Bem vindo ao BuscadorCEP!</HomeHeader>
+
                     <HomeSubHeaders>
                         <HomeSubHeader>
                             O aplicativo BuscadorCEP! permite que você encontre
                             códigos de endereçamento postais(CEP).
                         </HomeSubHeader>
+
                         <HomeSubHeader>
                             Se você já tiver o CEP em mãos e gostaria de buscar
                             seu endereço, o BuscadorCEP! Também vai te ajudar!
                         </HomeSubHeader>
                     </HomeSubHeaders>
+
                     <HomeButtons>
                         <Button
-                            onClick={() => naviage('/buscar-endereco')}
                             name="Buscar endereço"
+                            onClick={() => naviage('/buscar-endereco')}
                         />
+
                         <Button
-                            onClick={() => naviage('/buscar-cep')}
                             name="Buscar CEP"
+                            onClick={() => naviage('/buscar-cep')}
                         />
                     </HomeButtons>
                 </HomePresentation>
+
                 <HomeMap>
                     <MapSection />
                 </HomeMap>

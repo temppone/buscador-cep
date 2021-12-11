@@ -20,7 +20,7 @@ const Header = ({ logo, onClick }: IHeader): JSX.Element => {
     return (
         <HeaderContainer ref={ref}>
             <Burger open={open} setOpen={setOpen} />
-            <Menu onClick={onClick} setOpen={setOpen} open={open} />
+            <Menu onClick={onClick} open={open} setOpen={setOpen} />
 
             <Link to="/">
                 <LogoContainer>{logo}</LogoContainer>
