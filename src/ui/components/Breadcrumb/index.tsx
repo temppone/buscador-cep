@@ -11,7 +11,7 @@ const Breadcrumb = ({ routes }: IBreadcrumb) => {
     return (
         <BreadcrumbContainer>
             <BreadcrumbList>
-                {routes.map((route, index) => (
+                {routes.map((route) => (
                     <li key={route.name}>
                         <a href={route.path}>{route.name}</a>
                     </li>

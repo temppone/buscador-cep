@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Search } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import * as yup from 'yup';
 import { ptShort } from 'yup-locale-pt';
@@ -89,6 +90,10 @@ const SearchAddress = (): JSX.Element => {
                 setValue('neighborhood', response?.data?.bairro);
                 setHaveResult(true);
                 setValue('cep', searchParams.get('cep'));
+            }
+
+            if (error) {
+                toast.error('Erro ao buscar o CEP');
             }
             clearErrors();
         };
