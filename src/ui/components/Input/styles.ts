@@ -7,10 +7,6 @@ export const InputContainer = styled.div`
     font-size: 1.2rem;
     height: 6rem;
     width: 100%;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-        width: 50%;
-    }
 `;
 
 export const InputLabel = styled.label`
@@ -63,32 +59,4 @@ export const InputWarning = styled.div`
     padding: 0.4rem 0.2rem;
     color: ${({ theme }) => theme.palette.warning};
     font-size: 1rem;
-`;
-
-export const InputListContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 300px;
-`;
-
-export const InputList = styled.ul`
-    background-color: ${({ theme }) => theme.palette.input?.background};
-    z-index: 999;
-    border-radius: 0.4rem;
-    list-style: none;
-    padding: 0.1rem;
-    font-size: 0.8rem;
-    overflow-y: scroll;
-`;
-
-export const InputListItem = styled.li`
-    background-color: ${({ theme }) => theme.palette.input?.background};
-    padding: 0.9rem;
-    cursor: pointer;
-    border-radius: 0.4rem;
-    color: ${({ theme }) => theme.palette.text.hover};
-
-    :hover {
-        background-color: ${({ theme }) => theme.palette.input?.hover};
-    }
 `;
