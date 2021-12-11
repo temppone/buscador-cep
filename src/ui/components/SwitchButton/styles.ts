@@ -12,9 +12,7 @@ export const SwitchButtonSlider = styled.span<ISwitchButtonStyled>`
     right: 0;
     bottom: 0;
     background-color: ${({ theme, toggle }) =>
-        toggle
-            ? theme.palette.background.primary
-            : theme.palette.background.primary};
+        toggle ? theme.palette.text.primary : theme.palette.text.primary};
     border-radius: 15px;
     transition: 0.4s;
 
@@ -29,7 +27,10 @@ export const SwitchButtonSlider = styled.span<ISwitchButtonStyled>`
         height: 20px;
         border-radius: 100%;
 
-        background-color: ${({ toggle }) => (toggle ? 'white' : 'black')};
+        background-color: ${({ toggle, theme }) =>
+            toggle
+                ? theme.palette.highlight.primary
+                : theme.palette.highlight.primary};
 
         transition: 0.4s;
     }
@@ -46,7 +47,8 @@ export const SwitchButtonContainer = styled.label<ISwitchButtonStyled>`
     display: inline-block;
     width: 48px;
     height: 24px;
-    background-color: ${({ toggle }) => (toggle ? 'black' : 'white')};
+    background-color: ${({ toggle, theme }) =>
+        toggle ? theme.palette.text.primary : theme.palette.text.primary};
     border-radius: 15px;
     transition: 0.4s;
 

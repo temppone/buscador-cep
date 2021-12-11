@@ -7,7 +7,7 @@ export const FooterContainer = styled.div`
     position: absolute;
     width: 100%;
     top: 100%;
-    margin-top: 1rem;
+    margin-top: 10rem;
     background: ${({ theme }) => theme.palette.background.tertiary};
     padding: 2rem;
 `;

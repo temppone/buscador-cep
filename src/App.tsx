@@ -31,7 +31,6 @@ const App = (): JSX.Element => {
                 <GlobalStyle />
                 <Router>
                     <Header logo={logo} onClick={themeToggler} />
-                    <Breadcrumb routes={routes} />
 
                     <Suspense fallback={<Loading />}>
                         <Routes>
