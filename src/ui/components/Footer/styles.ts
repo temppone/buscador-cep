@@ -6,14 +6,13 @@ export const FooterContainer = styled.div`
     justify-content: center;
     font-size: ${({ theme }) => theme.fontSizes.small};
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 25rem;
     background: ${({ theme }) => theme.palette.background.tertiary};
-    position: relative;
     top: 100%;
     height: 10rem;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
-        position: absolute;
+        position: relative;
     }
 `;
 

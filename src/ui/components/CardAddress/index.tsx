@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+
+import { Info } from '@mui/icons-material';
 
 import { IAddressCard, IResultValues } from '../../../@types';
+import Modal from '../../../ui/components/Modal/index';
 import {
     AddressCardContainer,
     AddressCardItem,
@@ -10,10 +14,21 @@ import {
 } from './styles';
 
 const AddressCard = ({ data }: IAddressCard): JSX.Element => {
+    const [openModal, setOpenModal] = useState(false);
+    const [cepToShow, setCepToShow] = useState('');
+
     return (
         <AddressCardContainer>
+            {console.log('chegou aqui')}
+
             {data.map((item: IResultValues) => (
-                <AddressCardResult key={item.cep}>
+                <AddressCardResult
+                    key={item.cep}
+                    onClick={() => {
+                        setCepToShow(item.cep);
+                        setOpenModal(true);
+                    }}
+                >
                     {item.bairro && (
                         <AddressCardItem>
                             <AddressCardItemLabel>Bairro</AddressCardItemLabel>
@@ -22,6 +37,7 @@ const AddressCard = ({ data }: IAddressCard): JSX.Element => {
                             </AddressCardItemValue>
                         </AddressCardItem>
                     )}
+
                     {item.logradouro && (
                         <AddressCardItem>
                             <AddressCardItemLabel>
@@ -32,8 +48,49 @@ const AddressCard = ({ data }: IAddressCard): JSX.Element => {
                             </AddressCardItemValue>
                         </AddressCardItem>
                     )}
+
+                    {item.localidade && (
+                        <AddressCardItem>
+                            <AddressCardItemLabel>
+                                Localidade
+                            </AddressCardItemLabel>
+                            <AddressCardItemValue>
+                                {item.localidade}
+                            </AddressCardItemValue>
+                        </AddressCardItem>
+                    )}
+
+                    {item.uf && (
+                        <AddressCardItem>
+                            <AddressCardItemLabel>UF</AddressCardItemLabel>
+                            <AddressCardItemValue>
+                                {item.uf}
+                            </AddressCardItemValue>
+                        </AddressCardItem>
+                    )}
                 </AddressCardResult>
             ))}
+
+            {openModal && (
+                <Modal
+                    body="Esse é o cep do endereço que você está procurando"
+                    buttonName="Retornar"
+                    header={cepToShow}
+                    onClose={() => {
+                        setOpenModal(false);
+                        return;
+                    }}
+                    onCopyContent={() => {
+                        navigator.clipboard.writeText(cepToShow);
+                        toast.success('CEP copiado!', {
+                            icon: <Info />,
+                            style: {
+                                zIndex: 9999,
+                            },
+                        });
+                    }}
+                />
+            )}
         </AddressCardContainer>
     );
 };

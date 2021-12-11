@@ -1,6 +1,8 @@
+import { IApiResponse } from '../@types';
+
 const IBGE_API_URL = 'https://servicodados.ibge.gov.br/api/v1/';
 
-export const GET_STATES_IBGE = () => {
+export const GET_STATES_IBGE = (): IApiResponse => {
     return {
         url: `${IBGE_API_URL}localidades/estados`,
         options: {
@@ -12,7 +14,7 @@ export const GET_STATES_IBGE = () => {
     };
 };
 
-export const GET_CITIES_IBGE = (state?: string) => {
+export const GET_CITIES_IBGE = (state?: string): IApiResponse => {
     return {
         url: `${IBGE_API_URL}localidades/estados/${state}/distritos`,
         options: {

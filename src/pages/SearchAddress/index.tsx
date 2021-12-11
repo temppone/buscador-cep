@@ -28,64 +28,42 @@ import {
 
 interface IFormData {
     cep: string;
-
     address: string;
-
     state: string;
-
     city: string;
-
     neighborhood: string;
-
     number: string;
-
     complement: string;
 }
 
 const SearchAddress = (): JSX.Element => {
     const [haveResult, setHaveResult] = useState(false);
-
     const { loading, error, request } = useFetch();
-
     const [searchParams, setSearchParams] = useSearchParams();
-
     const [disabled, setDisabled] = useState(false);
-
     const navigate = useNavigate();
 
     yup.setLocale(ptShort);
 
     const schema = yup.object().shape({
         cep: yup
-
             .string()
-
             .required('CEP é obrigatório')
-
             .min(8)
-
             .max(8)
-
             .default(''),
 
         address: yup.string(),
-
         state: yup.string(),
-
         city: yup.string(),
     });
 
     const {
         handleSubmit,
-
         control,
-
         setError,
-
         setValue,
-
         clearErrors,
-
         formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),

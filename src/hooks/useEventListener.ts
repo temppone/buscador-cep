@@ -4,7 +4,7 @@ function useEventListener<T extends HTMLElement = HTMLDivElement>(
     eventName: keyof WindowEventMap | string,
     handler: (event: Event) => void,
     element?: RefObject<T>
-) {
+): void {
     const savedHandler = useRef<(event: Event) => void>();
 
     useEffect(() => {

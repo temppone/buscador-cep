@@ -35,7 +35,7 @@ export const MenuItem = styled.div`
     text-align: center;
 
     a {
-        padding: 1rem;
+        padding: 2rem 0;
     }
 
     a:hover {

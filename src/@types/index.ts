@@ -41,6 +41,7 @@ export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     name: string;
     backgroundLess?: boolean;
     svg?: ReactElement;
+    background?: string;
 }
 
 export interface IRoute {
@@ -71,4 +72,14 @@ export interface IResultValues {
 
 export interface IAddressCard {
     data: IResultValues[];
+}
+
+export interface IApiResponse {
+    url: string;
+    options: {
+        method: string;
+        headers: {
+            'Content-Type': string;
+        };
+    };
 }

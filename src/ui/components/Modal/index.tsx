@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Close as CloseIcon } from '@mui/icons-material';
+import { Close as CloseIcon, ContentCopy } from '@mui/icons-material';
 
 import Button from '../Button';
 import {
-    CloseButton,
+    CopyContentButton as CopyContentButton,
     ModalBody,
     ModalContainer,
     ModalContent,
@@ -13,39 +13,35 @@ import {
 
 interface IModal {
     header: string;
-
     body: string;
-
     buttonName: string;
-
+    onCopyContent?: () => void;
     onClose?: () => void;
-
-    onClick?: () => void;
 }
 
 const Modal = ({
     header,
-
     body,
-
     buttonName,
-
+    onCopyContent,
     onClose,
-
-    onClick,
 }: IModal): JSX.Element => {
     return (
         <ModalContainer>
             <ModalContent>
-                <CloseButton>
-                    <Button name="" onClick={onClose} svg={<CloseIcon />} />
-                </CloseButton>
+                <CopyContentButton>
+                    <Button
+                        name=""
+                        onClick={onCopyContent}
+                        svg={<ContentCopy fontSize="medium" />}
+                    />
+                </CopyContentButton>
 
                 <ModalHeader>{header}</ModalHeader>
 
                 <ModalBody>{body}</ModalBody>
 
-                <Button name={buttonName} onClick={onClick} />
+                <Button name={buttonName} onClick={onClose} />
             </ModalContent>
         </ModalContainer>
     );

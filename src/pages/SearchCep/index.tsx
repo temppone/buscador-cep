@@ -11,10 +11,8 @@ import { IOption, IResultValues } from '../../@types';
 import { GET_CITIES_IBGE, GET_STATES_IBGE } from '../../api/ibge';
 import { GET_STREETS } from '../../api/viacep';
 import useFetch from '../../hooks/useFetch';
-import routes from '../../routes';
 import { ReactComponent as SearchCepSvg } from '../../ui/assets/svgs/searchCep.svg';
 import AutoCompleteInput from '../../ui/components/AutoCompleteInput';
-import Breadcrumb from '../../ui/components/Breadcrumb';
 import Button from '../../ui/components/Button';
 import AddressCard from '../../ui/components/CardAddress';
 import Input from '../../ui/components/Input';
@@ -28,21 +26,15 @@ import {
 
 interface IFormSearchCep {
     state: string;
-
     city: string;
-
     street: string;
 }
 
 const SearchCep = () => {
     const { loading, error, request } = useFetch();
-
     const [states, setStates] = useState<IOption[]>([]);
-
     const [citties, setCitties] = useState<IOption[]>([]);
-
     const [results, setResults] = useState<IResultValues[]>([]);
-
     const navigate = useNavigate();
 
     const [selectedState, setSelectedState] = useState<IOption>({
@@ -50,7 +42,6 @@ const SearchCep = () => {
 
         value: '',
     });
-
     const [selectedCity, setSelectedCity] = useState<IOption>({
         label: '',
 
@@ -61,21 +52,15 @@ const SearchCep = () => {
 
     const schema = yup.object().shape({
         state: yup.string().required('O estado é obrigatório'),
-
         city: yup.string().required('A cidade é obrigatória'),
-
         street: yup.string().min(3),
     });
 
     const {
         handleSubmit,
-
         control,
-
         setValue,
-
         setError,
-
         formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
@@ -84,12 +69,9 @@ const SearchCep = () => {
     useEffect(() => {
         const getStates = async () => {
             const { response } = await request(GET_STATES_IBGE());
-
             const statesResponse = response?.data?.map((state: any) => ({
                 label: state.nome,
-
                 value: state.id,
-
                 sigla: state.sigla,
             }));
 
@@ -107,7 +89,6 @@ const SearchCep = () => {
 
             const cittiesResponse = response?.data?.map((city: any) => ({
                 label: city.nome,
-
                 value: city.id,
             }));
 
@@ -126,23 +107,16 @@ const SearchCep = () => {
 
         if (error) {
             toast.error('Não foi possível encontrar o endereço');
-
             return;
         }
 
         if (response?.data.length === 0) {
             toast.error('É necessário digitar um logradouro');
-
-            setError('street', {
-                message: 'Digite pelo menos 3 caracteres',
-            });
-
-            return;
         }
 
         if (response?.data.length > 0) {
+            console.log({ response });
             setResults(response?.data);
-
             toast.success('Endereço encontrado');
         }
     };
@@ -162,8 +136,7 @@ const SearchCep = () => {
                         label="UF"
                         onChange={(event: any, selected: any) => {
                             setSelectedState(selected);
-
-                            setValue('state', selected.value || '');
+                            setValue('state', selected?.value || '');
                         }}
                         options={states}
                     />
@@ -174,7 +147,7 @@ const SearchCep = () => {
                         onChange={(event: any, selected: any) => {
                             setSelectedCity(selected);
 
-                            setValue('city', selected.value || '');
+                            setValue('city', selected?.value || '');
                         }}
                         options={citties ?? []}
                     />
@@ -199,8 +172,6 @@ const SearchCep = () => {
                     />
                 </SearchCepForm>
 
-                {results?.length > 0 && <AddressCard data={results} />}
-
                 <Button
                     name="Buscar Endereço"
                     onClick={() => navigate('/buscar-endereco')}
@@ -214,7 +185,11 @@ const SearchCep = () => {
             </SearchCepContent>
 
             <SearchCepSvgContainer>
-                <SearchCepSvg height="50rem" width="50rem" />
+                {results ? (
+                    <AddressCard data={results} />
+                ) : (
+                    <SearchCepSvg height="50rem" width="50rem" />
+                )}
             </SearchCepSvgContainer>
         </SearchCepContainer>
     );

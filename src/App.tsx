@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 import { ThemeProvider } from 'styled-components';
 
 import useThemeMode from './hooks/useThemeMode';
@@ -20,9 +21,9 @@ const App = (): JSX.Element => {
     const themeMode = themeName === 'light' ? lightTheme : darkTheme;
     const logo =
         themeName === 'light' ? (
-            <LogoDarkSvg width="50" height="50" />
+            <LogoDarkSvg height="50" width="50" />
         ) : (
-            <LogoLightSvg width="50" height="50" />
+            <LogoLightSvg height="50" width="50" />
         );
 
     return (
@@ -36,12 +37,12 @@ const App = (): JSX.Element => {
                         <Routes>
                             {routes.map((route) => (
                                 <Route
-                                    path={route.path}
-                                    key={route.path}
                                     element={route.element}
+                                    key={route.path}
+                                    path={route.path}
                                 />
                             ))}
-                            <Route path="*" element={<NotFound />} />
+                            <Route element={<NotFound />} path="*" />
                         </Routes>
                     </Suspense>
 

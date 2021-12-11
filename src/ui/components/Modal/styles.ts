@@ -10,14 +10,18 @@ export const ModalContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 99;
     color: ${({ theme }) => theme.palette.text.primary};
 `;
 
-export const CloseButton = styled.div`
+export const CopyContentButton = styled.div`
     display: flex;
     justify-content: flex-end;
     float: right;
+
+    button {
+        padding: 1rem;
+    }
 `;
 
 export const ModalContent = styled.div`

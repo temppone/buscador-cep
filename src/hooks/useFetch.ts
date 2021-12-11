@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 import axios, { AxiosRequestConfig } from 'axios';
 
-const useFetch = () => {
+const useFetch = (): any => {
     const [data, setData] = useState<unknown>(null);
 
     const [loading, setLoading] = useState<boolean>(false);
