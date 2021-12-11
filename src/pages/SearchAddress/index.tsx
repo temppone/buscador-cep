@@ -106,6 +106,7 @@ const SearchAddress = (): JSX.Element => {
             cep: removeCepMask(data.cep),
         });
     };
+
     return (
         <SearchAddressContainer>
             <SearchArddressSection>

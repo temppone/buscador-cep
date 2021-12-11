@@ -1,5 +1,10 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect, useMemo, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import { ptShort } from 'yup-locale-pt';
 
 import { IOption } from '../../@types';
 import { GET_CITIES_IBGE, GET_STATES_IBGE } from '../../api/ibge';
@@ -19,12 +24,17 @@ import {
     SearchCepForm,
 } from './styles';
 
+interface IFormSearchCep {
+    state: string;
+    city: string;
+    street: string;
+}
+
 const SearchCep = () => {
     const { loading, error, request } = useFetch();
     const [states, setStates] = useState<IOption[]>([]);
     const [citties, setCitties] = useState<IOption[]>([]);
-    const [streets, setStreets] = useState<IOption[]>([]);
-    const [results, setResults] = useState<any[]>([]);
+    const [results, setResults] = useState<string[]>([]);
     const navigate = useNavigate();
     const [selectedState, setSelectedState] = useState<IOption>({
         label: '',
@@ -33,6 +43,23 @@ const SearchCep = () => {
     const [selectedCity, setSelectedCity] = useState<IOption>({
         label: '',
         value: '',
+    });
+
+    yup.setLocale(ptShort);
+
+    const schema = yup.object().shape({
+        state: yup.string().required('O estado é obrigatório'),
+        city: yup.string().required('A cidade é obrigatória'),
+        street: yup.string().min(3),
+    });
+
+    const {
+        handleSubmit,
+        control,
+        setValue,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
     });
 
     useEffect(() => {
@@ -72,63 +99,87 @@ const SearchCep = () => {
         const { response } = await request(
             GET_STREETS(selectedCity.label, selectedState.sigla, publicPlace)
         );
-        const streetsResponse = response?.data?.map((street: any) => ({
-            label: street.logradouro,
-            value: street.id,
-        }));
 
-        setStreets(streetsResponse);
+        setResults(response?.data);
+    };
+
+    const onSubmit = (data: IFormSearchCep) => {
+        toast.promise(getStreets(data.street), {
+            loading: 'Carregando...',
+            success: 'Endereço encontrado!',
+            error: error ? 'Erro ao buscar endereço' : '',
+        });
     };
 
     return (
         <SearchCepContainer>
-            <SearchCepForm>
+            <SearchCepForm action="" onSubmit={handleSubmit(onSubmit)}>
                 <PageHeader title="Buscar CEP" />
                 <Breadcrumb routes={routes} />
+
                 <AutoCompleteInput
                     onChange={(event: any, selected: any) => {
                         setSelectedState(selected);
+                        setValue('state', selected.value);
                     }}
                     label="UF"
                     options={states}
+                    inputError={errors?.state?.message}
                 />
+
                 <AutoCompleteInput
                     onChange={(event: any, selected: any) => {
                         setSelectedCity(selected);
+                        setValue('city', selected.value);
                     }}
                     label="Cidade"
                     options={citties ?? []}
+                    inputError={errors?.city?.message}
                 />
-                <Input
-                    label="Logradouro"
-                    inputError=""
-                    onChange={(e) => getStreets(e.target.value)}
-                />
-                <Button type="submit" name="Buscar" />
 
-                {results?.length > 0 && (
-                    <ResultsContainer>
-                        <ResultsList>
-                            {results.map((result: any) => (
-                                <ResultItem key={result.value}>
-                                    {result.label}
-                                </ResultItem>
-                            ))}
-                        </ResultsList>
-                    </ResultsContainer>
-                )}
-
-                <Button
-                    name="Buscar Endereço"
-                    onClick={() => navigate('/buscar-endereco')}
+                <Controller
+                    control={control}
+                    name="street"
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <Input
+                            label="Logradouro"
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            value={value}
+                            inputError={errors?.street?.message}
+                        />
+                    )}
                 />
 
                 <Button
-                    name="Voltar"
-                    onClick={() => navigate('/')}
-                    backgroundLess
+                    type="submit"
+                    name={loading ? 'Carregando...' : 'Buscar'}
                 />
             </SearchCepForm>
+
+            {results?.length > 0 && (
+                <ResultsContainer>
+                    <ResultsList>
+                        {results.map((result: any) => (
+                            <ResultItem key={result.value}>
+                                {result.localidade} - {result.cep} -{' '}
+                                {result?.bairro}
+                            </ResultItem>
+                        ))}
+                    </ResultsList>
+                </ResultsContainer>
+            )}
+
+            <Button
+                name="Buscar Endereço"
+                onClick={() => navigate('/buscar-endereco')}
+            />
+
+            <Button
+                name="Voltar"
+                onClick={() => navigate('/')}
+                backgroundLess
+            />
         </SearchCepContainer>
     );
 };

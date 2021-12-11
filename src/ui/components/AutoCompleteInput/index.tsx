@@ -30,7 +30,10 @@ const AutoCompleteInput = ({
                 onChange={onChange}
                 renderInput={(params) => (
                     <InputContainer ref={params.InputProps.ref}>
-                        <AutoCompleteField {...params.inputProps} />
+                        <AutoCompleteField
+                            inputError={!!inputError}
+                            {...params.inputProps}
+                        />
                         <InputWarning>{inputError}</InputWarning>
                     </InputContainer>
                 )}

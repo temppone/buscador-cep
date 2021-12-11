@@ -4,10 +4,8 @@ export const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
     font-size: ${({ theme }) => theme.fontSizes.small};
-    position: absolute;
     width: 100%;
-    top: 100%;
-    margin-top: 10rem;
+    margin-top: 5rem;
     background: ${({ theme }) => theme.palette.background.tertiary};
     padding: 2rem;
 `;

@@ -18,7 +18,7 @@ export const SearchCepContainer = styled.div`
     }
 `;
 
-export const SearchCepForm = styled.div`
+export const SearchCepForm = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
