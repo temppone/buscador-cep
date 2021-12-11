@@ -32,10 +32,7 @@
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/no-use-before-define": "warn",
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "linebreak-style": 0,
         "import-helpers/order-imports": [
             "warn",
             {

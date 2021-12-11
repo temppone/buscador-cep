@@ -7,10 +7,6 @@ export const InputContainer = styled.div`
     font-size: 1.2rem;
     height: 6rem;
     width: 100%;
-
-    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-        width: 50%;
-    }
 `;
 
 export const AutoCompleteLabel = styled.label`

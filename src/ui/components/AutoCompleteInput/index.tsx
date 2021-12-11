@@ -48,6 +48,9 @@ const AutoCompleteInput = ({
                         <InputWarning>{inputError}</InputWarning>
                     </InputContainer>
                 )}
+                sx={{
+                    width: '100%',
+                }}
             />
         </AutoCompleteLabel>
     );

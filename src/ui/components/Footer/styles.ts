@@ -11,6 +11,10 @@ export const FooterContainer = styled.div`
     position: relative;
     top: 100%;
     height: 10rem;
+
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+        position: absolute;
+    }
 `;
 
 export const FooterContent = styled.div`
