@@ -6,15 +6,22 @@ interface IBreadcrumbItem {
 
 export const BreadcrumbContainer = styled.div`
     display: flex;
+    padding: 0 2rem;
+
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+        width: 960px;
+        margin: 0 auto;
+    }
+    @media screen and (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+        width: 1280px;
+    }
 `;
 
-export const BreadcrumbList = styled.ol`
+export const BreadcrumbList = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    font-size: ${({ theme }) => theme.fontSizes.small};
 `;
 
 export const BreadcrumbItem = styled.li<IBreadcrumbItem>`

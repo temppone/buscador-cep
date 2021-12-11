@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 
-import routes from '../../routes';
-import Breadcrumb from '../../ui/components/Breadcrumb';
 import Button from '../../ui/components/Button';
 import Head from '../../ui/components/Head';
 import MapSection from '../../ui/components/MapSection';
@@ -36,7 +34,7 @@ const Home = (): JSX.Element => {
                         </HomeSubHeader>
                         <HomeSubHeader>
                             Se você já tiver o CEP em mãos e gostaria de buscar
-                            seu endereço, o BuscadorCEP! ambém vai te ajudar!
+                            seu endereço, o BuscadorCEP! Também vai te ajudar!
                         </HomeSubHeader>
                     </HomeSubHeaders>
                     <HomeButtons>

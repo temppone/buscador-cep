@@ -1,6 +1,6 @@
 const IBGE_API_URL = 'https://servicodados.ibge.gov.br/api/v1/';
 
-export const GET_STATES = () => {
+export const GET_STATES_IBGE = () => {
     return {
         url: `${IBGE_API_URL}localidades/estados`,
         options: {
@@ -12,9 +12,9 @@ export const GET_STATES = () => {
     };
 };
 
-export const GET_CITIES = (stateId: string) => {
+export const GET_CITIES_IBGE = (state?: string) => {
     return {
-        url: `${IBGE_API_URL}localidades/estados/${stateId}/municipios`,
+        url: `${IBGE_API_URL}localidades/estados/${state}/distritos`,
         options: {
             method: 'GET',
             headers: {

@@ -23,3 +23,15 @@ export const GET_STREETS = (city?: string, state?: string, street?: string) => {
         },
     };
 };
+
+export const GET_CEP = (city?: string, state?: string, street?: string) => {
+    return {
+        url: `${API_VIACEP}${state}/${city}/${street?.replace(' ', '+')}/json/`,
+        options: {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        },
+    };
+};

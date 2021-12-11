@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
+import { slideTopTriangle } from '../../shared/keyframes';
+
 export const SearchCepContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 2rem;
+    animation: ${slideTopTriangle} 1000ms;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}) {
         width: 960px;
