@@ -19,7 +19,10 @@
         "project": "tsconfig.json",
         "sourceType": "module"
     },
-    "plugins": ["eslint-plugin-import-helpers", "react-hooks"],
+    "plugins": [
+        "eslint-plugin-import-helpers",
+        "react-hooks"
+    ],
     "root": true,
     "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
@@ -29,6 +32,10 @@
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/no-use-before-define": "warn",
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
         "import-helpers/order-imports": [
             "warn",
             {
@@ -39,19 +46,25 @@
                 "groups": [
                     "/^react/",
                     "module",
-                    ["parent", "sibling", "index"]
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
                 ],
                 "newlinesBetween": "always"
             }
         ],
-        "linebreak-style": ["warn", "windows"],
         "prettier/prettier": [
             "error",
             {
                 "endOfLine": "auto"
             }
         ],
-        "quotes": ["warn", "single"],
+        "quotes": [
+            "warn",
+            "single"
+        ],
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-sort-props": [
             "warn",
@@ -59,8 +72,10 @@
                 "ignoreCase": true
             }
         ],
-
-        "semi": ["warn", "always"]
+        "semi": [
+            "warn",
+            "always"
+        ]
     },
     "settings": {
         "react": {

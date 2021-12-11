@@ -11,6 +11,7 @@ const Head = ({ title = '', description = '' }: HeadProps): null => {
         document.title = `${title} | BuscadorCEP!`;
 
         document
+            // eslint-disable-next-line quotes
             ?.querySelector("meta[name='description']")
             ?.setAttribute('content', description || '');
     });

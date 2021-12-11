@@ -37,6 +37,7 @@ const useFetch = () => {
 
             setLoading(false);
 
+            // eslint-disable-next-line no-unsafe-finally
             return { response, json };
         }
     }, []);
