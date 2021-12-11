@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
+import { slideTopTriangle } from '../../shared/keyframes';
+
 export const NotFoundContainer = styled.div`
     display: flex;
     flex-direction: column;
     background: transparent;
     align-self: center;
+    animation: ${slideTopTriangle} 1000ms;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}) {
         width: 960px;

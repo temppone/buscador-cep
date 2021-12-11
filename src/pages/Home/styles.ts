@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { slideDown } from '../../shared/keyframes';
+import { slideTopTriangle } from '../../shared/keyframes';
 
 export const HomeContainer = styled.div`
     display: flex;
@@ -22,7 +22,7 @@ export const HomeContent = styled.div`
     flex-direction: column;
     width: 100%;
     padding: 1rem;
-    animation: ${slideDown} 1000ms;
+    animation: ${slideTopTriangle} 1000ms;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
         flex-direction: row;

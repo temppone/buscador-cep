@@ -33,18 +33,21 @@ const SearchWithCep = (): JSX.Element => {
     const [haveResult, setHaveResult] = useState(false);
     const { loading, error, request } = useFetch();
     const [searchParams, setSearchParams] = useSearchParams();
+    const [disabled, setDisabled] = useState(false);
     const navigate = useNavigate();
 
     yup.setLocale(ptShort);
 
     const schema = yup.object().shape({
-        cep: yup.string().required('CEP é obrigatório').min(8).max(8),
+        cep: yup
+            .string()
+            .required('CEP é obrigatório')
+            .min(8)
+            .max(8)
+            .default(''),
         address: yup.string(),
         state: yup.string(),
         city: yup.string(),
-        neighborhood: yup.string(),
-        number: yup.string(),
-        complement: yup.string(),
     });
 
     const {
@@ -52,31 +55,35 @@ const SearchWithCep = (): JSX.Element => {
         control,
         setError,
         setValue,
+        clearErrors,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
     });
 
     useEffect(() => {
-        setValue('cep', searchParams.get('cep'));
+        clearErrors('cep');
+
         const getCepResult = async () => {
+            setDisabled(false);
             const { response } = await request(
                 SEARCH_CEP(removeCepMask(searchParams?.get('cep') ?? ''))
             );
 
+            if (response?.data.erro) {
+                setError('cep', { message: 'CEP não encontrado' });
+                setHaveResult(false);
+                return;
+            }
+
             if (searchParams?.get('cep')?.length === 8) {
+                setDisabled(true);
                 setValue('address', response?.data?.logradouro);
                 setValue('state', response?.data?.uf);
                 setValue('city', response?.data?.localidade);
                 setValue('neighborhood', response?.data?.bairro);
                 setHaveResult(true);
-                return;
-            }
-
-            if (response?.data?.erro) {
-                setError('cep', { message: 'CEP não encontrado' });
-                setHaveResult(false);
-                console.log(error);
+                setValue('cep', searchParams.get('cep'));
             }
         };
 
@@ -104,6 +111,7 @@ const SearchWithCep = (): JSX.Element => {
                             placeholder="00000-000"
                             inputError={errors?.cep?.message}
                             maxLength={9}
+                            disabled={disabled}
                             icon={
                                 loading ? (
                                     <Loading />
@@ -137,6 +145,7 @@ const SearchWithCep = (): JSX.Element => {
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     value={value}
+                                    disabled
                                 />
                             )}
                         />
@@ -153,6 +162,7 @@ const SearchWithCep = (): JSX.Element => {
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     value={value}
+                                    disabled
                                 />
                             )}
                         />
@@ -169,6 +179,7 @@ const SearchWithCep = (): JSX.Element => {
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     value={value}
+                                    disabled
                                 />
                             )}
                         />
@@ -185,6 +196,7 @@ const SearchWithCep = (): JSX.Element => {
                                     onChange={onChange}
                                     onBlur={onBlur}
                                     value={value}
+                                    disabled
                                 />
                             )}
                         />
@@ -197,21 +209,25 @@ const SearchWithCep = (): JSX.Element => {
                         <Button
                             type="button"
                             name="Voltar"
-                            onClick={() => navigate(-1)}
+                            onClick={() => navigate('/')}
+                            backgroundLess
                         />
                     </FormButtonsContainer>
                 ) : (
                     <FormButtonsContainer>
                         <Button
+                            onClick={() => window.print()}
+                            name="Imprimir"
+                        />
+                        <Button
                             onClick={() => {
                                 setHaveResult(false);
                                 setValue('cep', '');
+                                setDisabled(false);
+                                navigate('/buscar-endereco');
                             }}
                             name="Nova Busca"
-                        />
-                        <Button
-                            onClick={() => window.print()}
-                            name="Imprimir"
+                            backgroundLess
                         />
                     </FormButtonsContainer>
                 )}
