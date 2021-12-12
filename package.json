@@ -38,7 +38,9 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "cy:open": "cypress open",
+        "cy:run": "cypress run"
     },
     "eslintConfig": {
         "extends": [
@@ -59,6 +61,7 @@
         ]
     },
     "devDependencies": {
+        "@testing-library/cypress": "^8.0.2",
         "@types/react-router-dom": "^5.3.2",
         "@typescript-eslint/eslint-plugin": "^5.5.0",
         "@typescript-eslint/parser": "^5.5.0",
@@ -66,6 +69,7 @@
         "eslint-config-airbnb": "^19.0.1",
         "eslint-config-prettier": "^8.3.0",
         "eslint-import-resolver-typescript": "^2.5.0",
+        "eslint-plugin-cypress": "^2.12.1",
         "eslint-plugin-import": "^2.25.3",
         "eslint-plugin-import-helpers": "^1.2.0",
         "eslint-plugin-jsx-a11y": "^6.5.1",
