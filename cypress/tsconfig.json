@@ -10,8 +10,4 @@
             "@testing-library/cypress"
         ]
     },
-    "include": [
-        "**/*.ts",
-        "plugins/index.js"
-    ]
 }

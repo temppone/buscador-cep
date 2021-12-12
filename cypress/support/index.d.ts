@@ -3,9 +3,9 @@
 declare namespace Cypress {
     interface Chainable {
         /**
-         * Custom command to visit google.com
-         *@example cy.google()
-            */
-        google(): Chainable<Element>;
+          * Custom command to get element by data-cy values
+          * @example cy.getByDataCy('selector')
+          */
+        getByDataCy(selector: string): Chainable<JQuery<HTMLElement>>
     }
 }

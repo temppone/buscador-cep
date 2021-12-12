@@ -7,7 +7,7 @@ import { MenuContainer, MenuItem } from './styles';
 
 const Menu = ({ open, onClick, setOpen }: IMenu): JSX.Element => {
     return (
-        <MenuContainer open={open}>
+        <MenuContainer data-cy="menu-header" open={open}>
             <MenuItem>
                 <Link onClick={() => setOpen(!open)} to="/">
                     Home

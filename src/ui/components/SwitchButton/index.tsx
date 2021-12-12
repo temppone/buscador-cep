@@ -11,8 +11,8 @@ const SwitchButton = ({ onClick }: ISwitchButton): JSX.Element => {
     const [toggle, setToggle] = useState(false);
 
     return (
-        <SwitchButtonContainer>
-            <SwitchButtonInput type="checkbox" defaultChecked={toggle} />
+        <SwitchButtonContainer data-cy="switch-button">
+            <SwitchButtonInput defaultChecked={toggle} type="checkbox" />
             <SwitchButtonSlider
                 {...{ toggle }}
                 onClick={() => {
