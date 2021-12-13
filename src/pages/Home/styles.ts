@@ -50,7 +50,7 @@ export const HomeHeader = styled.h1`
     width: 15rem;
     font-weight: 600;
     font-size: ${({ theme }) => theme.fontSizes.extraLarge};
-    color: ${({ theme }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.header?.primary};
     margin-bottom: 1rem;
 
     @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {

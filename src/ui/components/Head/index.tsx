@@ -6,7 +6,7 @@ interface HeadProps {
     description: string;
 }
 
-const Head = ({ title = '', description = '' }: HeadProps): null => {
+const Head = function ({ title = '', description = '' }: HeadProps): null {
     useEffect(() => {
         document.title = `${title} | BuscadorCEP!`;
 

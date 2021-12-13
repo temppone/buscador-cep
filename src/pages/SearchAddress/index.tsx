@@ -25,6 +25,8 @@ import {
     SearchWithCepContainer,
     SearchWithCepForm,
 } from './styles';
+import Breadcrumb from '../../ui/components/Breadcrumb';
+import { routes } from '../../routes';
 
 interface IFormData {
     cep: string;
@@ -36,7 +38,7 @@ interface IFormData {
     complement: string;
 }
 
-const SearchAddress = (): JSX.Element => {
+const SearchAddress = function (): JSX.Element {
     const [haveResult, setHaveResult] = useState(false);
     const { loading, error, request } = useFetch();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -46,12 +48,7 @@ const SearchAddress = (): JSX.Element => {
     yup.setLocale(ptShort);
 
     const schema = yup.object().shape({
-        cep: yup
-            .string()
-            .required('CEP é obrigatório')
-            .min(8)
-            .max(8)
-            .default(''),
+        cep: yup.string().required('CEP é obrigatório').min(8).max(8).default(''),
 
         address: yup.string(),
         state: yup.string(),
@@ -75,33 +72,20 @@ const SearchAddress = (): JSX.Element => {
         const getCepResult = async () => {
             setDisabled(false);
 
-            const { response } = await request(
-                SEARCH_CEP(removeCepMask(searchParams?.get('cep') ?? ''))
-            );
-
+            const { response } = await request(SEARCH_CEP(removeCepMask(searchParams?.get('cep') ?? '')));
             if (response?.data.erro) {
                 setError('cep', { message: 'CEP não encontrado' });
-
                 setHaveResult(false);
-
                 return;
             }
 
-            if (searchParams?.get('cep')?.length === 8) {
-                setDisabled(true);
-
-                setValue('address', response?.data?.logradouro);
-
-                setValue('state', response?.data?.uf);
-
-                setValue('city', response?.data?.localidade);
-
-                setValue('neighborhood', response?.data?.bairro);
-
-                setHaveResult(true);
-
-                setValue('cep', searchParams.get('cep'));
-            }
+            setDisabled(true);
+            setValue('address', response?.data?.logradouro);
+            setValue('state', response?.data?.uf);
+            setValue('city', response?.data?.localidade);
+            setValue('neighborhood', response?.data?.bairro);
+            setHaveResult(true);
+            setValue('cep', searchParams.get('cep'));
 
             if (error) {
                 toast.error('Erro ao buscar o CEP');
@@ -109,8 +93,11 @@ const SearchAddress = (): JSX.Element => {
 
             clearErrors();
         };
+        if (searchParams?.get('cep')?.length === 8) {
+            getCepResult();
+        }
 
-        getCepResult();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchParams]);
 
     const onSubmit = (data: IFormData) => {
@@ -122,19 +109,15 @@ const SearchAddress = (): JSX.Element => {
     return (
         <SearchAddressContainer>
             <SearchArddressSection>
-                <PageHeader title="Buscar endereço" />
+                <Breadcrumb routes={routes} />
+                <PageHeader title='Buscar endereço' />
 
                 <SearchWithCepContainer>
-                    <SearchWithCepForm
-                        action=""
-                        onSubmit={handleSubmit(onSubmit)}
-                    >
+                    <SearchWithCepForm action='' onSubmit={handleSubmit(onSubmit)}>
                         <Controller
                             control={control}
-                            name="cep"
-                            render={({
-                                field: { onChange, onBlur, value },
-                            }) => (
+                            name='cep'
+                            render={({ field: { onChange, onBlur, value } }) => (
                                 <Input
                                     disabled={disabled}
                                     icon={
@@ -143,8 +126,7 @@ const SearchAddress = (): JSX.Element => {
                                         ) : (
                                             <Search
                                                 sx={{
-                                                    color: lightTheme.palette
-                                                        .input?.placeholder,
+                                                    color: lightTheme.palette.input?.placeholder,
                                                     fontSize: '2.2rem',
 
                                                     marginTop: '0.8rem',
@@ -153,12 +135,12 @@ const SearchAddress = (): JSX.Element => {
                                         )
                                     }
                                     inputError={errors?.cep?.message}
-                                    label="CEP"
+                                    label='CEP'
                                     maxLength={9}
                                     onBlur={onBlur}
                                     onChange={onChange}
-                                    placeholder="00000-000"
-                                    type="text"
+                                    placeholder='00000-000'
+                                    type='text'
                                     value={maskCep(value || '')}
                                 />
                             )}
@@ -168,16 +150,12 @@ const SearchAddress = (): JSX.Element => {
                             <>
                                 <Controller
                                     control={control}
-                                    name="address"
-                                    render={({
-                                        field: { onChange, onBlur, value },
-                                    }) => (
+                                    name='address'
+                                    render={({ field: { onChange, onBlur, value } }) => (
                                         <Input
                                             disabled
-                                            inputError={
-                                                errors?.address?.message
-                                            }
-                                            label="Logradouro"
+                                            inputError={errors?.address?.message}
+                                            label='Logradouro'
                                             onBlur={onBlur}
                                             onChange={onChange}
                                             value={value}
@@ -187,16 +165,12 @@ const SearchAddress = (): JSX.Element => {
 
                                 <Controller
                                     control={control}
-                                    name="state"
-                                    render={({
-                                        field: { onChange, onBlur, value },
-                                    }) => (
+                                    name='state'
+                                    render={({ field: { onChange, onBlur, value } }) => (
                                         <Input
                                             disabled
-                                            inputError={
-                                                errors?.address?.message
-                                            }
-                                            label="UF"
+                                            inputError={errors?.address?.message}
+                                            label='UF'
                                             onBlur={onBlur}
                                             onChange={onChange}
                                             value={value}
@@ -206,16 +180,12 @@ const SearchAddress = (): JSX.Element => {
 
                                 <Controller
                                     control={control}
-                                    name="city"
-                                    render={({
-                                        field: { onChange, onBlur, value },
-                                    }) => (
+                                    name='city'
+                                    render={({ field: { onChange, onBlur, value } }) => (
                                         <Input
                                             disabled
-                                            inputError={
-                                                errors?.address?.message
-                                            }
-                                            label="Cidade"
+                                            inputError={errors?.address?.message}
+                                            label='Cidade'
                                             onBlur={onBlur}
                                             onChange={onChange}
                                             value={value}
@@ -225,16 +195,12 @@ const SearchAddress = (): JSX.Element => {
 
                                 <Controller
                                     control={control}
-                                    name="neighborhood"
-                                    render={({
-                                        field: { onChange, onBlur, value },
-                                    }) => (
+                                    name='neighborhood'
+                                    render={({ field: { onChange, onBlur, value } }) => (
                                         <Input
                                             disabled
-                                            inputError={
-                                                errors?.address?.message
-                                            }
-                                            label="Bairro"
+                                            inputError={errors?.address?.message}
+                                            label='Bairro'
                                             onBlur={onBlur}
                                             onChange={onChange}
                                             value={value}
@@ -246,29 +212,18 @@ const SearchAddress = (): JSX.Element => {
 
                         {!haveResult ? (
                             <FormButtonsContainer>
-                                <Button name="Buscar" type="submit" />
+                                <Button name='Buscar' type='submit' />
 
-                                <Button
-                                    name="Buscar CEP"
-                                    onClick={() => navigate('/buscar-cep')}
-                                />
+                                <Button name='Buscar CEP' onClick={() => navigate('/buscar-cep')} />
 
-                                <Button
-                                    backgroundLess
-                                    name="Voltar"
-                                    onClick={() => navigate('/')}
-                                    type="button"
-                                />
+                                <Button backgroundLess name='Voltar' onClick={() => navigate('/')} type='button' />
                             </FormButtonsContainer>
                         ) : (
                             <FormButtonsContainer>
-                                <Button
-                                    name="Imprimir"
-                                    onClick={() => window.print()}
-                                />
+                                <Button name='Imprimir' onClick={() => window.print()} />
                                 <Button
                                     backgroundLess
-                                    name="Nova Busca"
+                                    name='Nova Busca'
                                     onClick={() => {
                                         setHaveResult(false);
 
@@ -286,7 +241,7 @@ const SearchAddress = (): JSX.Element => {
             </SearchArddressSection>
 
             <PresentationSvgContainer>
-                <SearchAddressSvg height="55rem" width="55rem" />
+                <SearchAddressSvg height='55rem' width='55rem' />
             </PresentationSvgContainer>
         </SearchAddressContainer>
     );

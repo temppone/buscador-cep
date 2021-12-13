@@ -12,7 +12,7 @@ export const InputContainer = styled.div`
 export const InputLabel = styled.label`
     font-weight: 500;
     font-size: 1.2rem;
-    color: ${({ theme }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.header?.primary};
     position: relative;
 `;
 
@@ -31,7 +31,7 @@ export const InputField = styled.input<{ inputError: string | undefined }>`
     border-radius: 0.4rem;
     transition: 0.1s;
     background: ${({ theme }) => theme.palette.input?.background};
-    color: ${({ theme }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.input?.primary};
     margin-top: 0.4rem;
 
     ::placeholder {
@@ -39,19 +39,14 @@ export const InputField = styled.input<{ inputError: string | undefined }>`
     }
 
     border: 0.1rem solid
-        ${({ inputError }) =>
-            inputError
-                ? ({ theme }) => theme.palette.warning
-                : ({ theme }) => theme.palette.input?.outline};
+        ${({ inputError }) => (inputError ? ({ theme }) => theme.palette.warning : ({ theme }) => theme.palette.input?.outline)};
 
     :hover,
     :focus {
         outline: none;
-        border-color: ${({ inputError }) =>
-            inputError
-                ? ({ theme }) => theme.palette.warning
-                : ({ theme }) => theme.palette.input?.outlineHover};
         background: ${({ theme }) => theme.palette.input?.hover};
+        border-color: ${({ inputError }) =>
+            inputError ? ({ theme }) => theme.palette.warning : ({ theme }) => theme.palette.input?.outlineHover};
     }
 `;
 

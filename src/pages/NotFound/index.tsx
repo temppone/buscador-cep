@@ -1,20 +1,13 @@
 import React from 'react';
 
-import {
-    NotFoundContainer,
-    NotFoundDescription,
-    NotFoundSubTitle,
-    NotFoundTitle,
-} from './styles';
+import { NotFoundContainer, NotFoundDescription, NotFoundSubTitle, NotFoundTitle } from './styles';
 
-const NotFound = (): JSX.Element => {
+const NotFound = function (): JSX.Element {
     return (
         <NotFoundContainer>
             <NotFoundTitle>404</NotFoundTitle>
             <NotFoundSubTitle>Algo deu errado :(</NotFoundSubTitle>
-            <NotFoundDescription>
-                Não conseguimos encontrar a página que você está procurando.
-            </NotFoundDescription>
+            <NotFoundDescription>Não conseguimos encontrar a página que você está procurando.</NotFoundDescription>
         </NotFoundContainer>
     );
 };

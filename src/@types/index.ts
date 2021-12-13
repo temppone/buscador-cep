@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 export interface IInputListItem {
     id: string;
@@ -48,7 +48,12 @@ export interface IRoute {
     name: string;
     path: string;
     element: ReactElement;
-    breadcrumb?: string[];
+    breadcrumb?: IBreadcrumb[];
+}
+
+export interface IBreadcrumb {
+    name: string;
+    path: string;
 }
 
 export interface IOption {

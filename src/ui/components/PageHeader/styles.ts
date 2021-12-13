@@ -21,6 +21,7 @@ export const PageHeaderTitle = styled.h1`
     position: relative;
     z-index: 1;
     margin-bottom: 1rem;
+    color: ${({ theme }) => theme.palette.header?.primary};
 
     :after {
         content: '';
@@ -36,6 +37,6 @@ export const PageHeaderTitle = styled.h1`
 `;
 
 export const PageHeaderCaption = styled.h2`
-    color: ${({ theme }) => theme.palette.text.secondary};
+    color: ${({ theme }) => theme.palette.header?.secondary};
     font-size: ${({ theme }) => theme.fontSizes.small};
 `;

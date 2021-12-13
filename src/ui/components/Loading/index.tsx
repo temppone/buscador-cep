@@ -2,7 +2,7 @@ import React from 'react';
 
 import { LoadingContainer, LoadingLine } from './styles';
 
-const Loading = (): JSX.Element => {
+const Loading = function (): JSX.Element {
     return (
         <LoadingContainer>
             <LoadingLine />

@@ -1,21 +1,29 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import { IRoute } from '../../../@types';
-import { BreadcrumbContainer, BreadcrumbList } from './styles';
+import { BreadcrumbContainer, BreadcrumbItem, BreadcrumbList } from './styles';
 
-interface IBreadcrumb {
+interface IBreadcrumbComponent {
     routes: IRoute[];
 }
 
-const Breadcrumb = ({ routes }: IBreadcrumb) => {
+const Breadcrumb = function ({ routes }: IBreadcrumbComponent) {
+    const location = useLocation();
+
     return (
         <BreadcrumbContainer>
             <BreadcrumbList>
-                {routes.map((route) => (
-                    <li key={route.name}>
-                        <a href={route.path}>{route.name}</a>
-                    </li>
-                ))}
+                {routes.map((route, index) => {
+                    if (location.pathname === route.path) {
+                        return route?.breadcrumb?.map(crumb => (
+                            <BreadcrumbItem disabled={location.pathname === crumb.path} key={route.path}>
+                                <Link to={crumb.path}>{crumb.name}</Link>
+                            </BreadcrumbItem>
+                        ));
+                    }
+                    return null;
+                })}
             </BreadcrumbList>
         </BreadcrumbContainer>
     );

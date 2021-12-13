@@ -29,6 +29,7 @@ declare module 'styled-components' {
         outline: IColorShade;
         warning: string;
         input?: IColorShade;
+        header?: IColorShade;
     }
 
     interface IBreakpoints {

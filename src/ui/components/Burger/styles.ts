@@ -38,8 +38,7 @@ export const BurgerLine = styled.div<IBurgerStyled>`
 
     :nth-child(2) {
         opacity: ${({ open }) => (open ? '0' : '1')};
-        transform: ${({ open }) =>
-            open ? 'translateX(0px)' : 'translateX(0)'};
+        transform: ${({ open }) => (open ? 'translateX(0px)' : 'translateX(0)')};
     }
 
     :nth-child(3) {

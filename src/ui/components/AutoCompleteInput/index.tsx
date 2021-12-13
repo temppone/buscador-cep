@@ -10,40 +10,26 @@ import { InputContainer, AutoCompleteField, AutoCompleteLabel } from './styles';
 
 interface IAutoCompleteInput {
     label: string;
-
     options: IOption[];
-
+    // eslint-disable-next-line react/require-default-props
     inputError?: string;
-
     onChange: any;
+    disabled?: boolean;
 }
 
-const AutoCompleteInput = ({
-    inputError,
-
-    options,
-
-    label,
-
-    onChange,
-}: IAutoCompleteInput) => {
+const AutoCompleteInput = function ({ inputError, options, label, onChange, disabled }: IAutoCompleteInput) {
     return (
         <AutoCompleteLabel>
             {label}
 
             <Autocomplete
-                id="custom-input-demo"
+                data-cy='autocomplete-select'
+                id='custom-input-demo'
                 onChange={onChange}
-                options={options?.sort((a: IOption, b: IOption) =>
-                    a.label.localeCompare(b.label)
-                )}
-                renderInput={(params) => (
+                options={options?.sort((a: IOption, b: IOption) => a.label.localeCompare(b.label))}
+                renderInput={params => (
                     <InputContainer ref={params.InputProps.ref}>
-                        <AutoCompleteField
-                            inputError={!!inputError}
-                            placeholder="Selecione"
-                            {...params.inputProps}
-                        />
+                        <AutoCompleteField inputError={!!inputError} placeholder='Selecione' {...params.inputProps} />
 
                         <InputWarning>{inputError}</InputWarning>
                     </InputContainer>
@@ -51,6 +37,7 @@ const AutoCompleteInput = ({
                 sx={{
                     width: '100%',
                 }}
+                disabled={disabled}
             />
         </AutoCompleteLabel>
     );

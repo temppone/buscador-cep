@@ -5,22 +5,14 @@ import { Info } from '@mui/icons-material';
 
 import { IAddressCard, IResultValues } from '../../../@types';
 import Modal from '../../../ui/components/Modal/index';
-import {
-    AddressCardContainer,
-    AddressCardItem,
-    AddressCardItemLabel,
-    AddressCardItemValue,
-    AddressCardResult,
-} from './styles';
+import { AddressCardContainer, AddressCardItem, AddressCardItemLabel, AddressCardItemValue, AddressCardResult } from './styles';
 
-const AddressCard = ({ data }: IAddressCard): JSX.Element => {
+const AddressCard = function ({ data }: IAddressCard): JSX.Element {
     const [openModal, setOpenModal] = useState(false);
     const [cepToShow, setCepToShow] = useState('');
 
     return (
         <AddressCardContainer>
-            {console.log('chegou aqui')}
-
             {data.map((item: IResultValues) => (
                 <AddressCardResult
                     key={item.cep}
@@ -32,40 +24,28 @@ const AddressCard = ({ data }: IAddressCard): JSX.Element => {
                     {item.bairro && (
                         <AddressCardItem>
                             <AddressCardItemLabel>Bairro</AddressCardItemLabel>
-                            <AddressCardItemValue>
-                                {item.bairro}
-                            </AddressCardItemValue>
+                            <AddressCardItemValue>{item.bairro}</AddressCardItemValue>
                         </AddressCardItem>
                     )}
 
                     {item.logradouro && (
                         <AddressCardItem>
-                            <AddressCardItemLabel>
-                                Logradouro
-                            </AddressCardItemLabel>
-                            <AddressCardItemValue>
-                                {item.logradouro}
-                            </AddressCardItemValue>
+                            <AddressCardItemLabel>Logradouro</AddressCardItemLabel>
+                            <AddressCardItemValue>{item.logradouro}</AddressCardItemValue>
                         </AddressCardItem>
                     )}
 
                     {item.localidade && (
                         <AddressCardItem>
-                            <AddressCardItemLabel>
-                                Localidade
-                            </AddressCardItemLabel>
-                            <AddressCardItemValue>
-                                {item.localidade}
-                            </AddressCardItemValue>
+                            <AddressCardItemLabel>Localidade</AddressCardItemLabel>
+                            <AddressCardItemValue>{item.localidade}</AddressCardItemValue>
                         </AddressCardItem>
                     )}
 
                     {item.uf && (
                         <AddressCardItem>
                             <AddressCardItemLabel>UF</AddressCardItemLabel>
-                            <AddressCardItemValue>
-                                {item.uf}
-                            </AddressCardItemValue>
+                            <AddressCardItemValue>{item.uf}</AddressCardItemValue>
                         </AddressCardItem>
                     )}
                 </AddressCardResult>
@@ -73,12 +53,11 @@ const AddressCard = ({ data }: IAddressCard): JSX.Element => {
 
             {openModal && (
                 <Modal
-                    body="Esse é o cep do endereço que você está procurando"
-                    buttonName="Retornar"
+                    body='Esse é o cep do endereço que você está procurando'
+                    buttonName='Retornar'
                     header={cepToShow}
                     onClose={() => {
                         setOpenModal(false);
-                        return;
                     }}
                     onCopyContent={() => {
                         navigator.clipboard.writeText(cepToShow);

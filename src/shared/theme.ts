@@ -12,13 +12,13 @@ export const darkTheme: DefaultTheme = {
         },
 
         text: {
-            primary: '#fffffe',
+            primary: '#2D3132',
             secondary: '#b8c1ec',
             hover: '#303030',
         },
 
         highlight: {
-            primary: '#f9db95',
+            primary: '#f7d283',
             background: '#f9db95',
             text: '#303030',
             hover: '#ffe1a3',
@@ -32,11 +32,17 @@ export const darkTheme: DefaultTheme = {
         },
 
         input: {
+            primary: '#2D3132',
             background: '#fffffe',
             hover: '#ffffff',
             outline: '#f2f2f2',
             placeholder: '#bdbdbd',
             outlineHover: '#f9db95',
+        },
+
+        header: {
+            primary: '#fffffe',
+            secondary: '#923932',
         },
     },
 
@@ -79,7 +85,7 @@ export const lightTheme: DefaultTheme = {
             primary: '#f9db95',
             background: '#f9db95',
             text: '#303030',
-            hover: '#ffe1a3',
+            hover: '#ffcc5e',
         },
 
         warning: '#f44336',
@@ -95,6 +101,11 @@ export const lightTheme: DefaultTheme = {
             outline: '#f2f2f2',
             placeholder: '#bdbdbd',
             outlineHover: '#f9db95',
+        },
+
+        header: {
+            primary: '#2D3132',
+            secondary: '#353334',
         },
     },
 

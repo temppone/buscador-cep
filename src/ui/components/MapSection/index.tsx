@@ -5,7 +5,7 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
 import { MapSectionContainer } from './styles';
 
-const MapSection = (): JSX.Element => {
+const MapSection = function (): JSX.Element {
     const geolocation = useGeolocation();
 
     const { isLoaded } = useJsApiLoader({
@@ -15,21 +15,11 @@ const MapSection = (): JSX.Element => {
     });
 
     return (
-        <MapSectionContainer>
+        <MapSectionContainer data-cy='maps-home'>
             {isLoaded ? (
                 <GoogleMap
                     center={
-                        !geolocation.error
-                            ? {
-                                  lat: geolocation.latitude,
-
-                                  lng: geolocation.longitude,
-                              }
-                            : {
-                                  lat: -23.5489,
-
-                                  lng: -46.6388,
-                              }
+                        !geolocation.error ? { lat: geolocation.latitude, lng: geolocation.longitude } : { lat: -23.5489, lng: -46.6388 }
                     }
                     mapContainerStyle={{ width: '100%', height: '100%' }}
                     options={{

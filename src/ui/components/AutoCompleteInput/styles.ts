@@ -41,18 +41,13 @@ export const AutoCompleteField = styled.input<{
     }
 
     border: 0.1rem solid
-        ${({ inputError }) =>
-            inputError
-                ? ({ theme }) => theme.palette.warning
-                : ({ theme }) => theme.palette.input?.outline};
+        ${({ inputError }) => (inputError ? ({ theme }) => theme.palette.warning : ({ theme }) => theme.palette.input?.outline)};
 
     :hover,
     :focus {
         outline: none;
         border-color: ${({ inputError }) =>
-            inputError
-                ? ({ theme }) => theme.palette.warning
-                : ({ theme }) => theme.palette.input?.outlineHover};
+            inputError ? ({ theme }) => theme.palette.warning : ({ theme }) => theme.palette.input?.outlineHover};
         background: ${({ theme }) => theme.palette.input?.hover};
     }
 `;

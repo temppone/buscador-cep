@@ -11,7 +11,7 @@ interface IHeader {
     logo?: React.ReactNode;
 }
 
-const Header = ({ logo, onClick }: IHeader): JSX.Element => {
+const Header = function ({ logo, onClick }: IHeader): JSX.Element {
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
 
@@ -22,7 +22,7 @@ const Header = ({ logo, onClick }: IHeader): JSX.Element => {
             <Burger open={open} setOpen={setOpen} />
             <Menu onClick={onClick} open={open} setOpen={setOpen} />
 
-            <Link to="/">
+            <Link to='/'>
                 <LogoContainer>{logo}</LogoContainer>
             </Link>
         </HeaderContainer>

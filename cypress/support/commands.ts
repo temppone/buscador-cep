@@ -26,8 +26,8 @@
 
 // Add testing library commands
 import '@testing-library/cypress/add-commands';
-import cypress = require('cypress')
+import cypress = require('cypress');
 
 Cypress.Commands.add('getByDataCy', (selector, ...args) => {
-    return cy.get(`[data-cy=${selector}]`, ...args)
-})
+    return cy.get(`[data-cy=${selector}]`, ...args);
+});

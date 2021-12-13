@@ -3,14 +3,14 @@ import { RefObject, useEffect, useRef } from 'react';
 function useEventListener<T extends HTMLElement = HTMLDivElement>(
     eventName: keyof WindowEventMap | string,
     handler: (event: Event) => void,
-    element?: RefObject<T>
+    element?: RefObject<T>,
 ): void {
     const savedHandler = useRef<(event: Event) => void>();
 
     useEffect(() => {
         const targetElement: T | Window = element?.current || window;
         if (!(targetElement && targetElement.addEventListener)) {
-            return;
+            return undefined;
         }
 
         if (savedHandler.current !== handler) {
