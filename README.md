@@ -5,6 +5,8 @@ SPA mobile first desenvolvido em React.js
 
 - O **BuscadorCEP!** é um projeto que ajuda pessoas a encontrar endereços e CEPs.
 - Na Home, o site é apresentado junto com  as suas funcionalidades
+- Para buscar um endereço você deve ir até a página "Buscar endereço" e digitar um CEP
+- Para buscar um CEP você deve ir até a página "Buscar CEP" e preencher o fomulário
 
 ### Bibliotecas
 
@@ -14,9 +16,9 @@ As bibliotecas utilizadas foram:
 - Para fazer as rotas foi utilizado [react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
 - Para facilitar a notificação e melhorar a experiência do usuário foi utilizado [react-hot-toast](https://react-hot-toast.com/)
 - Para manipulação de forms foi utilizado [react-hook-form](https://react-hook-form.com/), foi uma alternativa viável, uma vez que o form é bem simples. Além disso, foram utilizadas as bibliotecas [yup](https://github.com/jquense/yup) + [yup-locale-pt](https://www.npmjs.com/package/yup-locale-pt) para a validação do form, pois já existe uma integração entre as bibliotecas.
-- Para manipulação de banco de dados no browser foi utilizado o [idb](https://www.npmjs.com/package/idb#installation)
 - Para icones e autocomplete, foi utilizada a biblioteca [mui](https://mui.com/)
 - Para testes e2e foi utilizada a biblioteca [cypress](https://cypress.io/)
+- Apis utilizadas [IBGE](https://servicodados.ibge.gov.br/api/v1/) e [viacep](https://viacep.com.br/ws/)
 
 
 ### Como rodar o projeto
