@@ -18,7 +18,7 @@ const Modal = function ({ header, body, buttonName, onCopyContent, onClose }: IM
         <ModalContainer>
             <ModalContent>
                 <CopyContentButton>
-                    <Button name='' onClick={onCopyContent} svg={<ContentCopy fontSize='medium' />} />
+                    <Button data-cy='copiar-colar-button' name='' onClick={onCopyContent} svg={<ContentCopy fontSize='medium' />} />
                 </CopyContentButton>
 
                 <ModalHeader>{header}</ModalHeader>

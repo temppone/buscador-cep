@@ -15,6 +15,7 @@ const AddressCard = function ({ data }: IAddressCard): JSX.Element {
         <AddressCardContainer>
             {data.map((item: IResultValues) => (
                 <AddressCardResult
+                    data-cy='address-card'
                     key={item.cep}
                     onClick={() => {
                         setCepToShow(item.cep);

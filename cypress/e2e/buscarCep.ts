@@ -13,9 +13,13 @@ describe('Buscar endereço', () => {
         cy.findByText('Logradouro').type('Rua')
         cy.findByRole('button', { name: 'Buscar' }).click().wait(3000);
         cy.findByText('Feito!').should('exist');
+
+        cy.getByDataCy('address-card').should('exist').click({ multiple: true });
+        cy.getByDataCy('copiar-colar-button').click();
+        cy.findByText('CEP copiado!').should('exist');
     })
 
-    it('should search cep with error', () => {
+    it.skip('should search cep with error', () => {
         cy.findByRole('button', { name: 'Buscar CEP' }).click();
 
         cy.url().should('include', '/buscar-cep').wait(3000);
@@ -25,7 +29,7 @@ describe('Buscar endereço', () => {
         cy.findByText('A cidade é obrigatória').should('exist');
     })
 
-    it('should display buttons', () => {
+    it.skip('should display buttons', () => {
         cy.findByRole('button', { name: 'Buscar CEP' }).click();
 
         cy.findByRole('button', { name: 'Voltar' }).should('be.visible').click();
