@@ -30,6 +30,7 @@ declare module 'styled-components' {
         warning: string;
         input?: IColorShade;
         header?: IColorShade;
+        button: IColorShade;
     }
 
     interface IBreakpoints {

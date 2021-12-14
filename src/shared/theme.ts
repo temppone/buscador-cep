@@ -44,6 +44,12 @@ export const darkTheme: DefaultTheme = {
             primary: '#fffffe',
             secondary: '#923932',
         },
+
+        button: {
+            primary: '#333333',
+            background: '#f9db95',
+            hover: '#f7dba0',
+        },
     },
 
     breakpoints: {
@@ -107,6 +113,12 @@ export const lightTheme: DefaultTheme = {
         header: {
             primary: '#2D3132',
             secondary: '#353334',
+        },
+
+        button: {
+            primary: '#333333',
+            background: '#f9db95',
+            hover: '#f7dba0',
         },
     },
 
