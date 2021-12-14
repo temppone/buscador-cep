@@ -18,10 +18,10 @@ export const darkTheme: DefaultTheme = {
         },
 
         highlight: {
-            primary: '#f7d283',
-            background: '#f9db95',
-            text: '#303030',
-            hover: '#ffe1a3',
+            primary: '#F9DB95',
+            background: '#F9DB95',
+            text: '#fac43f',
+            hover: '#F9DB95',
         },
 
         warning: '#f44336',
@@ -67,6 +67,7 @@ export const darkTheme: DefaultTheme = {
 
 export const lightTheme: DefaultTheme = {
     name: 'light',
+
     palette: {
         background: {
             body: '#fffdf9',

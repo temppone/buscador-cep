@@ -28,7 +28,6 @@ export const MenuContainer = styled.nav<IStyledMenu>`
 export const MenuItem = styled.div`
     padding: 2rem 0;
     font-weight: bold;
-    color: ${({ theme }) => theme.palette.text.primary};
     text-decoration: none;
     transition: color 0.3s linear;
     font-size: 1.5rem;
@@ -36,10 +35,11 @@ export const MenuItem = styled.div`
 
     a {
         padding: 2rem 0;
+        color: ${({ theme }) => theme.palette.header?.primary};
     }
 
     a:hover {
-        color: ${({ theme }) => theme.palette.text.hover};
+        color: ${({ theme }) => theme.palette.header?.hover};
     }
 
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {

@@ -11,7 +11,7 @@ export const SwitchButtonSlider = styled.span<ISwitchButtonStyled>`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${({ theme, toggle }) => (toggle ? theme.palette.text.primary : theme.palette.text.primary)};
+    background-color: ${({ theme }) => theme.palette.header?.primary};
     border-radius: 15px;
     transition: 0.4s;
 

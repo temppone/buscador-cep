@@ -26,7 +26,7 @@ export const BurgerContainer: any = styled.button`
 export const BurgerLine = styled.div<IBurgerStyled>`
     width: 2rem;
     height: 0.25rem;
-    background: ${({ theme }) => theme.palette.highlight.text};
+    background: ${({ theme }) => theme.palette.header?.primary};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
